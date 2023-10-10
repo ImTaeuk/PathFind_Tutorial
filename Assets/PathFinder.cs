@@ -156,8 +156,11 @@ public class PathFinder : MonoBehaviour
 
     public void FindPath(Node src, Node dst)
     {
+        if (OpenSet == null) OpenSet = new List<Node>();
         OpenSet.Clear();
+        if (CloseSet == null) CloseSet = new List<Node>();
         CloseSet.Clear();
+        if (totalPath == null) totalPath = new List<Node>();
         totalPath.Clear();
 
         gridCreator.InitalizeNodes();
@@ -171,7 +174,7 @@ public class PathFinder : MonoBehaviour
         while (OpenSet.Count > 0)
         {
             cur = GetLowestNodeInOpenSet();
-            // ±æ Ã£±â ¿Ï·á
+            // ê¸¸ ì°¾ê¸° ì™„ë£Œ
             if (cur == end)
             {
                 //End Function
